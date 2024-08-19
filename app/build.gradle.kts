@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp") version "1.9.10-1.0.13"
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -50,6 +52,30 @@ android {
 }
 
 dependencies {
+    //зависимости для запросов в апи
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.gson)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    //хилт
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.runtime.livedata)
+
+    //корутины
+    implementation(libs.kotlinx.coroutines.android)
+
+    //навигация
+    implementation(libs.androidx.navigation.compose)
+
+    //пагинация
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+
+    implementation(libs.coil.compose)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
